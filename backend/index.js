@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { getEvents, createEvents } = require("./controller/eventController");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,3 +31,6 @@ mongoose.connection.on("connected", () => {
 app.get("/", (req, res) => {
   res.json("Hello form LEVO");
 });
+
+app.get("/api/event", getEvents);
+app.post("/api/event", createEvents);
